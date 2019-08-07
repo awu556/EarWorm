@@ -1,6 +1,5 @@
 import React from 'react'
 import {Sidebar, Menu, Icon} from 'semantic-ui-react'
-import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
 const SidebarNav = props => (
@@ -11,7 +10,7 @@ const SidebarNav = props => (
     icon="labeled"
     inverted
     vertical
-    visible={false}
+    visible={props.sidebarToggle}
     width="thin"
   >
     <Menu.Item as={Link}>
@@ -30,9 +29,3 @@ const SidebarNav = props => (
 )
 
 export default SidebarNav
-
-SidebarNav.propTypes = {
-  animation: PropTypes.string,
-  direction: PropTypes.string,
-  visible: PropTypes.bool
-}

@@ -8,12 +8,26 @@ import {Button} from 'semantic-ui-react'
 import SidebarNav from './SidebarNav'
 
 class Navbar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      sidebarToggle: false
+    }
+    this.displaySideNav = this.displaySideNav.bind(this)
+  }
+
+  displaySideNav() {
+    !this.state.sidebarToggle
+      ? this.setState({sidebarToggle: true})
+      : this.setState({sidebarToggle: false})
+  }
+
   render() {
     const {isLoggedIn, handleClick} = this.props
     return (
       <div>
         <h1>EarWorm</h1>
-        <nav>
+        <nav className="center-nav">
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
@@ -25,12 +39,10 @@ class Navbar extends Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Button as={Link} to="/">
-                Home
-              </Button>
+              <Button onClick={this.displaySideNav}>Home</Button>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
-              <SidebarNav />
+              <SidebarNav sidebarToggle={this.state.sidebarToggle} />
             </div>
           )}
         </nav>

@@ -13,17 +13,17 @@ const SidebarNav = props => (
     visible={props.sidebarToggle}
     width="thin"
   >
-    <Menu.Item as={Link}>
+    <Menu.Item as={Link} to="/">
       <Icon name="home" />
       Home
     </Menu.Item>
-    <Menu.Item as={Link}>
-      <Icon name="gamepad" />
-      Games
+    <Menu.Item as={Link} to="/login">
+      <Icon name="user" />
+      Login
     </Menu.Item>
-    <Menu.Item as={Link}>
-      <Icon name="camera" />
-      Channels
+    <Menu.Item as={Link} to="/signup">
+      <Icon name="user" />
+      Sign Up
     </Menu.Item>
   </Sidebar>
 )

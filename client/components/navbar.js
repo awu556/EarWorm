@@ -24,6 +24,7 @@ class Navbar extends Component {
 
   render() {
     const {isLoggedIn, handleClick} = this.props
+    // console.log(this.props)
     return (
       <div>
         <h1>EarWorm</h1>
@@ -31,20 +32,26 @@ class Navbar extends Component {
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
+              <Link to="/home" onClick={this.displaySideNav}>
+                Home
+              </Link>
               <a href="#" onClick={handleClick}>
                 Logout
               </a>
+              <SidebarNav
+                sidebarToggle={this.state.sidebarToggle}
+                displaySideNav={this.displaySideNav}
+                user={this.props}
+              />
             </div>
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
               <Button onClick={this.displaySideNav}>Home</Button>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
               <SidebarNav
                 sidebarToggle={this.state.sidebarToggle}
                 displaySideNav={this.displaySideNav}
+                user={this.props}
               />
             </div>
           )}

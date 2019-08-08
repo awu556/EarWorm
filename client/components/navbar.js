@@ -42,7 +42,10 @@ class Navbar extends Component {
               <Button onClick={this.displaySideNav}>Home</Button>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
-              <SidebarNav sidebarToggle={this.state.sidebarToggle} />
+              <SidebarNav
+                sidebarToggle={this.state.sidebarToggle}
+                displaySideNav={this.displaySideNav}
+              />
             </div>
           )}
         </nav>

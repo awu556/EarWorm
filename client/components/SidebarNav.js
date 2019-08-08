@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 const SidebarNav = props => (
   <Sidebar
     as={Menu}
-    animation="uncover"
+    animation="overlay"
     direction="left"
     icon="labeled"
     inverted
@@ -13,15 +13,15 @@ const SidebarNav = props => (
     visible={props.sidebarToggle}
     width="thin"
   >
-    <Menu.Item as={Link} to="/">
+    <Menu.Item as={Link} to="/" onClick={props.displaySideNav}>
       <Icon name="home" />
       Home
     </Menu.Item>
-    <Menu.Item as={Link} to="/login">
+    <Menu.Item as={Link} to="/login" onClick={props.displaySideNav}>
       <Icon name="user" />
       Login
     </Menu.Item>
-    <Menu.Item as={Link} to="/signup">
+    <Menu.Item as={Link} to="/signup" onClick={props.displaySideNav}>
       <Icon name="user" />
       Sign Up
     </Menu.Item>

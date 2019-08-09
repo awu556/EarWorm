@@ -7,7 +7,7 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const data = await music.trackSearch({
-      q_lyrics: 'karma police arrest this man',
+      q_lyrics: req.query,
       s_artist_rating: 'desc',
       s_track_rating: 'desc',
       page_size: 100

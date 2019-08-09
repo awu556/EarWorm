@@ -20,7 +20,15 @@ form div {
   display: inline-block;
 }
 
-.center-nav {
+.song-search,
+.center-nav,
+.form-div {
   display: flex;
   justify-content: center;
+}
+
+.nav-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

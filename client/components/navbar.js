@@ -23,11 +23,11 @@ class Navbar extends Component {
   }
 
   render() {
-    const {isLoggedIn, handleClick} = this.props
+    const {isLoggedIn} = this.props
     // console.log(this.props)
     return (
       <div>
-        <h1>EarWorm</h1>
+        <img className="nav-logo" src="Earworm.png" />
         <nav className="center-nav">
           {isLoggedIn ? (
             <div>
@@ -35,9 +35,6 @@ class Navbar extends Component {
               <Link to="/home" onClick={this.displaySideNav}>
                 Home
               </Link>
-              <a href="#" onClick={handleClick}>
-                Logout
-              </a>
               <SidebarNav
                 sidebarToggle={this.state.sidebarToggle}
                 displaySideNav={this.displaySideNav}

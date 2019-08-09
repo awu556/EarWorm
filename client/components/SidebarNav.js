@@ -6,6 +6,7 @@ const SidebarNav = props =>
   props.user.isLoggedIn ? (
     <Sidebar
       as={Menu}
+      className="sideNavBar"
       animation="overlay"
       direction="left"
       icon="labeled"
@@ -14,7 +15,7 @@ const SidebarNav = props =>
       visible={props.sidebarToggle}
       width="thin"
     >
-      <Menu.Item as={Link} to="/" onClick={props.displaySideNav}>
+      <Menu.Item as={Link} to="/home" onClick={props.displaySideNav}>
         <Icon name="home" />
         Home
       </Menu.Item>
@@ -25,6 +26,10 @@ const SidebarNav = props =>
       >
         <Icon name="arrow alternate circle left" />
         Logout
+      </Menu.Item>
+      <Menu.Item as={Link} to="/searchForASong" onClick={props.displaySideNav}>
+        <Icon name="music" />
+        Search for a Song!
       </Menu.Item>
     </Sidebar>
   ) : (
@@ -49,6 +54,10 @@ const SidebarNav = props =>
       <Menu.Item as={Link} to="/signup" onClick={props.displaySideNav}>
         <Icon name="user" />
         Sign Up
+      </Menu.Item>
+      <Menu.Item as={Link} to="/searchForASong" onClick={props.displaySideNav}>
+        <Icon name="music" />
+        Search for a Song!
       </Menu.Item>
     </Sidebar>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Header, Image, Table} from 'semantic-ui-react'
+import {Header, Image, Table, Loader, Pagination} from 'semantic-ui-react'
 
 const SongSearchResults = props => {
   const musicData = props.searchResults
@@ -30,9 +30,16 @@ const SongSearchResults = props => {
           ))}
         </Table.Body>
       </Table>
+
+      <Pagination
+        defaultActivePage={1}
+        totalPages={10}
+        onChange={props.searchPage}
+        value={props.pageNum}
+      />
     </div>
   ) : (
-    ''
+    <Loader>Fetching songs that match your lyrics...</Loader>
   )
 }
 

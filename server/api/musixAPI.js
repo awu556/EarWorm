@@ -6,11 +6,14 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
+    const {lyrics, page, pagesize} = req.query
     const data = await music.trackSearch({
-      q_lyrics: req.query,
-      s_artist_rating: 'desc',
+      q: lyrics,
+      // s_artist_rating: 'desc',
       s_track_rating: 'desc',
-      page_size: 30
+      f_has_lyrics: 1,
+      // page: page,
+      page_size: 50
     })
     res.json(data)
   } catch (err) {

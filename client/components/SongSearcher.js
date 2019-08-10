@@ -9,25 +9,28 @@ class SongSearcher extends Component {
     this.state = {
       isLoading: false,
       musicResults: [],
-      value: ''
+      value: '',
+      searchLyrics: '',
+      searchPage: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
+    this.onSearchChange = this.onSearchChange.bind(this)
   }
-
-  // async componentDidMount() {
-  //   const res = await axios.get('/api/music/')
-  //   this.setState({ musicResults: res.data.message.body.track_list })
-  // }
 
   async onSubmit() {
     event.preventDefault()
-    const res = await axios.get('/api/music/')
+    const lyrics = this.state.searchLyrics
+    const res = await axios.get(`/api/music?lyrics=${lyrics}`)
     this.setState({musicResults: res.data.message.body.track_list})
+  }
+
+  onSearchChange(event) {
+    this.setState({searchLyrics: event.target.value})
+    console.log(this.state)
   }
 
   render() {
     const {isLoading, value, musicResults} = this.state
-    console.log(this.state.musicResults)
     return (
       <div className="song-search">
         <div>
@@ -37,14 +40,22 @@ class SongSearcher extends Component {
             <Form.Field>
               <label>Put in your lyrics!</label>
 
-              <Search loading={isLoading} />
+              <input
+                type="text"
+                placeholder="Lyrics go here"
+                onChange={this.onSearchChange}
+                value={this.state.lyrics}
+              />
             </Form.Field>
 
             <Button type="submit">Search</Button>
           </Form>
         </div>
 
-        <SongSearchResults searchResults={this.state.musicResults} />
+        <SongSearchResults
+          searchResults={this.state.musicResults}
+          pageNum={this.state.searchPage}
+        />
       </div>
     )
   }

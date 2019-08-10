@@ -1,37 +1,50 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {Button} from 'semantic-ui-react'
+import SongSearchResults from './SongSearchResults'
+import {Button, Form, Search} from 'semantic-ui-react'
 
 class SongSearcher extends Component {
   constructor() {
     super()
     this.state = {
-      trackData: []
+      isLoading: false,
+      musicResults: [],
+      value: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
   }
 
+  // async componentDidMount() {
+  //   const res = await axios.get('/api/music/')
+  //   this.setState({ musicResults: res.data.message.body.track_list })
+  // }
+
   async onSubmit() {
     event.preventDefault()
     const res = await axios.get('/api/music/')
-    this.setState({trackData: res.data.message.body.track_list})
+    this.setState({musicResults: res.data.message.body.track_list})
   }
 
   render() {
-    console.log(this.state.trackData)
+    const {isLoading, value, musicResults} = this.state
+    console.log(this.state.musicResults)
     return (
       <div className="song-search">
         <div>
           <h2>Have a song lyric in mind? Look it up here!</h2>
-        </div>
-        <div>
-          <form onSubmit={this.onSubmit}>
-            <label>Put in your lyrics!</label>
-            <input type="text" />
+
+          <Form onSubmit={this.onSubmit} className="searchForm">
+            <Form.Field>
+              <label>Put in your lyrics!</label>
+
+              <Search loading={isLoading} />
+            </Form.Field>
+
             <Button type="submit">Search</Button>
-          </form>
+          </Form>
         </div>
-        <div />
+
+        <SongSearchResults searchResults={this.state.musicResults} />
       </div>
     )
   }

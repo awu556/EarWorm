@@ -26,15 +26,15 @@ class Navbar extends Component {
     const {isLoggedIn} = this.props
     // console.log(this.props)
     return (
-      <div>
+      <div className="all-nav-bar">
         <img className="nav-logo" src="Earworm.png" />
         <nav className="center-nav">
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home" onClick={this.displaySideNav}>
-                Home
-              </Link>
+              <Button secondary to="/" onClick={this.displaySideNav}>
+                Menu
+              </Button>
               <SidebarNav
                 sidebarToggle={this.state.sidebarToggle}
                 displaySideNav={this.displaySideNav}
@@ -44,7 +44,9 @@ class Navbar extends Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Button onClick={this.displaySideNav}>Home</Button>
+              <Button secondary onClick={this.displaySideNav}>
+                Menu
+              </Button>
               <SidebarNav
                 sidebarToggle={this.state.sidebarToggle}
                 displaySideNav={this.displaySideNav}

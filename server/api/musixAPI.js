@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
       q_lyrics: req.query,
       s_artist_rating: 'desc',
       s_track_rating: 'desc',
-      page_size: 100
+      page_size: 30
     })
     res.json(data)
   } catch (err) {

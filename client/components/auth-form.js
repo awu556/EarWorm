@@ -21,9 +21,9 @@ const AuthForm = props => {
           <label htmlFor="password">Password</label>
           <input name="password" type="password" placeholder="Password" />
         </Form.Field>
-        <Form.Field>
-          <Button type="submit">{displayName}</Button>
-        </Form.Field>
+
+        <Button type="submit">{displayName}</Button>
+
         {error && error.response && <div> {error.response.data} </div>}
       </Form>
       <a href="/auth/google">{displayName} with Google</a>

@@ -20,7 +20,6 @@ form div {
   display: inline-block;
 }
 
-.song-search,
 .center-nav,
 .form-div {
   display: flex;
@@ -31,4 +30,15 @@ form div {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.all-nav-bar {
+  background-color: grey;
+}
+
+.song-search {
+  display: flex;
+  flex-flow: column wrap;
+  margin-left: 25%;
+  margin-right: 25%;
 }

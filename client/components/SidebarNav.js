@@ -15,7 +15,7 @@ const SidebarNav = props =>
       visible={props.sidebarToggle}
       width="thin"
     >
-      <Menu.Item as={Link} to="/home" onClick={props.displaySideNav}>
+      <Menu.Item as={Link} to="/" onClick={props.displaySideNav}>
         <Icon name="home" />
         Home
       </Menu.Item>

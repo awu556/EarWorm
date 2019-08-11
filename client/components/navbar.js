@@ -27,7 +27,7 @@ class Navbar extends Component {
     // console.log(this.props)
     return (
       <div className="all-nav-bar">
-        <img className="nav-logo" src="Earworm2.png" />
+        <img className="nav-logo" src="Earworm3.png" />
         <nav className="center-nav">
           {isLoggedIn ? (
             <div>

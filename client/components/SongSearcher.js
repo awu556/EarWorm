@@ -59,7 +59,12 @@ class SongSearcher extends Component {
               />
             </Form.Field>
 
-            <Button style={{width: 200}} color="red" type="submit">
+            <Button
+              style={{width: 200}}
+              color="yellow"
+              size="large"
+              type="submit"
+            >
               Search
             </Button>
           </Form>

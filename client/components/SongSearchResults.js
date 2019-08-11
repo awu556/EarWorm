@@ -3,7 +3,7 @@ import {Header, Image, Table, Loader, Pagination} from 'semantic-ui-react'
 
 const SongSearchResults = props => {
   const musicData = props.searchResults
-  return musicData && musicData.length > 1 ? (
+  return musicData && musicData.length > 1 && Array.isArray(musicData) ? (
     <div className="songSearchResults">
       <Pagination
         pointing
@@ -48,7 +48,9 @@ const SongSearchResults = props => {
       />
     </div>
   ) : (
-    <Loader inverted>Fetching songs that match your lyrics...</Loader>
+    <div className="songSearchResults">
+      <h1>{musicData}</h1>
+    </div>
   )
 }
 

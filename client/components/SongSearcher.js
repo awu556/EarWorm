@@ -22,7 +22,9 @@ class SongSearcher extends Component {
     event.preventDefault()
     const lyrics = this.state.searchLyrics
     const res = await axios.get(`/api/music?lyrics=${lyrics}`)
-    this.setState({musicResults: res.data.message.body.track_list})
+    res.data.message.body.track_list.length > 0
+      ? this.setState({musicResults: res.data.message.body.track_list})
+      : this.setState({musicResults: 'Sorry, no songs match your lyrics!'})
   }
 
   onSearchChange(event) {
@@ -41,6 +43,7 @@ class SongSearcher extends Component {
 
   render() {
     const {isLoading, value, musicResults} = this.state
+    console.log(this.state.musicResults)
     return (
       <div>
         <div className="song-search">
@@ -48,11 +51,9 @@ class SongSearcher extends Component {
 
           <Form onSubmit={this.onSubmit} className="searchForm" size="massive">
             <Form.Field>
-              <label style={{textAlign: 'center'}}>Put in your lyrics!</label>
-
               <input
                 type="text"
-                placeholder="Lyrics go here"
+                placeholder="Like a rolling stone...."
                 onChange={this.onSearchChange}
                 value={this.state.lyrics}
                 style={{width: 1000}}
@@ -64,6 +65,7 @@ class SongSearcher extends Component {
               color="yellow"
               size="large"
               type="submit"
+              disabled={this.state.searchLyrics.length === 0}
             >
               Search
             </Button>

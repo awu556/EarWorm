@@ -9,8 +9,20 @@ export const UserHome = props => {
   const {email} = props
 
   return (
-    <div>
-      <h3>Welcome, {email}</h3>
+    <div className="homePage">
+      {!email ? (
+        ''
+      ) : (
+        <div>
+          <h3>Welcome, {email}</h3>
+        </div>
+      )}
+
+      <h2>
+        Ever listen to a song but only catch a small part in your head? It gets
+        annoying trying to figure it out. <br />
+        Let EarWorm help you find that song, and get it out of your head!
+      </h2>
     </div>
   )
 }

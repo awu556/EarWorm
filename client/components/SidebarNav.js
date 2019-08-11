@@ -7,13 +7,13 @@ const SidebarNav = props =>
     <Sidebar
       as={Menu}
       className="sideNavBar"
-      animation="overlay"
-      direction="left"
+      animation="scale down"
+      direction="bottom"
       icon="labeled"
       inverted
       vertical
       visible={props.sidebarToggle}
-      width="thin"
+      width="wide"
     >
       <Menu.Item as={Link} to="/" onClick={props.displaySideNav}>
         <Icon name="home" />
@@ -21,7 +21,7 @@ const SidebarNav = props =>
       </Menu.Item>
       <Menu.Item
         as={Link}
-        to="#"
+        to="/home"
         onClick={props.displaySideNav && props.user.handleClick}
       >
         <Icon name="arrow alternate circle left" />
@@ -35,13 +35,13 @@ const SidebarNav = props =>
   ) : (
     <Sidebar
       as={Menu}
-      animation="overlay"
-      direction="left"
+      animation="scale down"
+      direction="bottom"
       icon="labeled"
       inverted
       vertical
       visible={props.sidebarToggle}
-      width="thin"
+      width="wide"
     >
       <Menu.Item as={Link} to="/" onClick={props.displaySideNav}>
         <Icon name="home" />

@@ -15,6 +15,7 @@ class SongSearcher extends Component {
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
+    this.onPageChange = this.onPageChange.bind(this)
   }
 
   async onSubmit() {
@@ -26,7 +27,10 @@ class SongSearcher extends Component {
 
   onSearchChange(event) {
     this.setState({searchLyrics: event.target.value})
-    console.log(this.state)
+  }
+
+  onPageChange(event) {
+    this.setState({searchPage: event.target.value})
   }
 
   render() {
@@ -54,6 +58,7 @@ class SongSearcher extends Component {
 
         <SongSearchResults
           searchResults={this.state.musicResults}
+          pageChange={this.onPageChange}
           pageNum={this.state.searchPage}
         />
       </div>

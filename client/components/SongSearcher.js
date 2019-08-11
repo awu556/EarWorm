@@ -11,7 +11,7 @@ class SongSearcher extends Component {
       musicResults: [],
       value: '',
       searchLyrics: '',
-      searchPage: ''
+      searchPage: 1
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
@@ -29,30 +29,40 @@ class SongSearcher extends Component {
     this.setState({searchLyrics: event.target.value})
   }
 
-  onPageChange(event) {
-    this.setState({searchPage: event.target.value})
+  async onPageChange(event, data) {
+    console.log(data.activePage)
+    const lyrics = this.state.searchLyrics
+    let page = data.activePage
+    const res = await axios.get(`/api/music?lyrics=${lyrics}&page=${page}`)
+    this.setState({
+      searchPage: data.activePage,
+      musicResults: res.data.message.body.track_list
+    })
   }
 
   render() {
     const {isLoading, value, musicResults} = this.state
     return (
-      <div className="song-search">
-        <div>
+      <div>
+        <div className="song-search">
           <h2>Have a song lyric in mind? Look it up here!</h2>
 
-          <Form onSubmit={this.onSubmit} className="searchForm">
+          <Form onSubmit={this.onSubmit} className="searchForm" size="massive">
             <Form.Field>
-              <label>Put in your lyrics!</label>
+              <label style={{textAlign: 'center'}}>Put in your lyrics!</label>
 
               <input
                 type="text"
                 placeholder="Lyrics go here"
                 onChange={this.onSearchChange}
                 value={this.state.lyrics}
+                style={{width: 1000}}
               />
             </Form.Field>
 
-            <Button type="submit">Search</Button>
+            <Button style={{width: 200}} color="red" type="submit">
+              Search
+            </Button>
           </Form>
         </div>
 
@@ -65,19 +75,5 @@ class SongSearcher extends Component {
     )
   }
 }
-/**
- * CONTAINER
- */
-// const mapState = state => {
-//   return {
-//     trackList: state.songs
-//   }
-// }
-
-// const mapDispatch = dispatch => {
-//   return {
-//     recieveSongs: (lyrics) => dispatch(recieveSongs(lyrics))
-//   }
-// }
 
 export default SongSearcher

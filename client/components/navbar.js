@@ -32,9 +32,17 @@ class Navbar extends Component {
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Button secondary to="/" onClick={this.displaySideNav}>
+              <Button
+                secondary
+                size="large"
+                toggle
+                active={this.state.sidebarToggle}
+                style={{width: 250}}
+                onClick={this.displaySideNav}
+              >
                 Menu
               </Button>
+
               <SidebarNav
                 sidebarToggle={this.state.sidebarToggle}
                 displaySideNav={this.displaySideNav}
@@ -44,9 +52,17 @@ class Navbar extends Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Button secondary onClick={this.displaySideNav}>
+              <Button
+                secondary
+                size="large"
+                toggle
+                active={this.state.sidebarToggle}
+                style={{width: 250}}
+                onClick={this.displaySideNav}
+              >
                 Menu
               </Button>
+
               <SidebarNav
                 sidebarToggle={this.state.sidebarToggle}
                 displaySideNav={this.displaySideNav}

@@ -6,24 +6,11 @@ a {
   text-decoration: none;
 }
 
-label {
-  display: block;
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .center-nav,
 .form-div {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .nav-logo {
@@ -38,7 +25,19 @@ form div {
 
 .song-search {
   display: flex;
-  flex-flow: column wrap;
-  margin-left: 25%;
-  margin-right: 25%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.songSearchResults {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

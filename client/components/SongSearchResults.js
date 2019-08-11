@@ -4,7 +4,15 @@ import {Header, Image, Table, Loader, Pagination} from 'semantic-ui-react'
 const SongSearchResults = props => {
   const musicData = props.searchResults
   return musicData && musicData.length > 1 ? (
-    <div>
+    <div className="songSearchResults">
+      <Pagination
+        pointing
+        secondary
+        activePage={props.pageNum}
+        totalPages={10}
+        onPageChange={props.pageChange}
+      />
+
       <Table basic="very" celled collapsing>
         <Table.Header>
           <Table.Row>
@@ -32,14 +40,15 @@ const SongSearchResults = props => {
       </Table>
 
       <Pagination
-        defaultActivePage={1}
+        pointing
+        secondary
+        activePage={props.pageNum}
         totalPages={10}
-        onChange={props.searchPage}
-        value={props.pageNum}
+        onPageChange={props.pageChange}
       />
     </div>
   ) : (
-    <Loader>Fetching songs that match your lyrics...</Loader>
+    <Loader inverted>Fetching songs that match your lyrics...</Loader>
   )
 }
 

@@ -9,11 +9,10 @@ router.get('/', async (req, res, next) => {
     const {lyrics, page, pagesize} = req.query
     const data = await music.trackSearch({
       q: lyrics,
-      // s_artist_rating: 'desc',
       s_track_rating: 'desc',
       f_has_lyrics: 1,
-      // page: page,
-      page_size: 50
+      page: page,
+      page_size: 30
     })
     res.json(data)
   } catch (err) {

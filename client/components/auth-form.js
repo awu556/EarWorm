@@ -12,7 +12,7 @@ const AuthForm = props => {
 
   return (
     <div className="form-div">
-      <Form onSubmit={handleSubmit} name={name}>
+      <Form onSubmit={handleSubmit} name={name} size="massive">
         <Form.Field>
           <label htmlFor="email">Email</label>
           <input name="email" type="text" placeholder="Email" />

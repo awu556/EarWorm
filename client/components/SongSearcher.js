@@ -30,7 +30,6 @@ class SongSearcher extends Component {
   }
 
   async onPageChange(event, data) {
-    console.log(data.activePage)
     const lyrics = this.state.searchLyrics
     let page = data.activePage
     const res = await axios.get(`/api/music?lyrics=${lyrics}&page=${page}`)

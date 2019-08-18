@@ -2,50 +2,24 @@ body {
   font-family: sans-serif;
 }
 
-a {
-  text-decoration: none;
-}
-
-.center-nav,
-.form-div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.nav-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px;
-}
-
 .all-nav-bar {
   background-color: dodgerblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 20px;
 }
 
 .song-search {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  padding: 30px;
+  flex-flow: column wrap;
+  padding: 100px;
 }
 
 .songSearchResults {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  padding: 50px;
-}
-
-.searchForm {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.homePage {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-flow: column wrap;
+  margin: 50px;
 }

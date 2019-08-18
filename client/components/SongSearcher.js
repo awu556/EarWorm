@@ -42,26 +42,22 @@ class SongSearcher extends Component {
   }
 
   render() {
-    const {isLoading, value, musicResults} = this.state
-    console.log(this.state.musicResults)
     return (
       <div>
         <div className="song-search">
           <h2>Have a song lyric in mind? Look it up here!</h2>
 
-          <Form onSubmit={this.onSubmit} className="searchForm" size="massive">
+          <Form onSubmit={this.onSubmit} size="massive">
             <Form.Field>
               <input
                 type="text"
                 placeholder="Like a rolling stone...."
                 onChange={this.onSearchChange}
                 value={this.state.lyrics}
-                style={{width: 1000}}
               />
             </Form.Field>
 
             <Button
-              style={{width: 200}}
               color="yellow"
               size="large"
               type="submit"

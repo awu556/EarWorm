@@ -5,73 +5,20 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Button} from 'semantic-ui-react'
 
-import SidebarNav from './SidebarNav'
+import TopMenuBar from './TopMenuBar'
 
 class Navbar extends Component {
-  constructor() {
-    super()
-    this.state = {
-      sidebarToggle: false
-    }
-    this.displaySideNav = this.displaySideNav.bind(this)
-  }
-
-  displaySideNav() {
-    !this.state.sidebarToggle
-      ? this.setState({sidebarToggle: true})
-      : this.setState({sidebarToggle: false})
-  }
-
   render() {
     const {isLoggedIn} = this.props
-    // console.log(this.props)
     return (
       <div className="all-nav-bar">
-        <img className="nav-logo" src="Earworm3.png" />
-        <nav className="center-nav">
-          {isLoggedIn ? (
-            <div>
-              {/* The navbar will show these links after you log in */}
-              <Button
-                secondary
-                size="large"
-                toggle
-                active={this.state.sidebarToggle}
-                style={{width: 250}}
-                onClick={this.displaySideNav}
-              >
-                Menu
-              </Button>
+        <Link to="/">
+          <img src="Earworm.png" />
+        </Link>
 
-              <SidebarNav
-                sidebarToggle={this.state.sidebarToggle}
-                displaySideNav={this.displaySideNav}
-                user={this.props}
-              />
-            </div>
-          ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Button
-                secondary
-                size="large"
-                toggle
-                active={this.state.sidebarToggle}
-                style={{width: 250}}
-                onClick={this.displaySideNav}
-              >
-                Menu
-              </Button>
-
-              <SidebarNav
-                sidebarToggle={this.state.sidebarToggle}
-                displaySideNav={this.displaySideNav}
-                user={this.props}
-              />
-            </div>
-          )}
+        <nav>
+          <TopMenuBar user={this.props} />
         </nav>
-        <hr />
       </div>
     )
   }
@@ -99,6 +46,5 @@ export default connect(mapState, mapDispatch)(Navbar)
  * PROP TYPES
  */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }

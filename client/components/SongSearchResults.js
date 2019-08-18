@@ -1,5 +1,5 @@
 import React from 'react'
-import {Header, Image, Table, Loader, Pagination} from 'semantic-ui-react'
+import {Header, Table, Pagination} from 'semantic-ui-react'
 
 const SongSearchResults = props => {
   const musicData = props.searchResults

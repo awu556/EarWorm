@@ -6,7 +6,7 @@ const TopMenuBar = props => {
   return (
     <div className="topMenuBar">
       {props.user.isLoggedIn ? (
-        <Menu size="massive" inverted>
+        <Menu size="massive" inverted fluid widths={3}>
           <Menu.Item as={Link} to="/">
             Home
           </Menu.Item>
@@ -18,7 +18,7 @@ const TopMenuBar = props => {
           </Menu.Item>
         </Menu>
       ) : (
-        <Menu size="massive" inverted>
+        <Menu size="massive" inverted fluid widths={4}>
           <Menu.Item as={Link} to="/">
             Home
           </Menu.Item>

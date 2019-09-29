@@ -15,14 +15,18 @@ body {
 
 .homePage {
   display: flex;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px;
 }
 
 .song-search {
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-flow: column wrap;
-  padding: 100px;
+  flex-direction: column;
+  margin: 50px;
 }
 
 .songSearchResults {
@@ -30,4 +34,18 @@ body {
   align-items: center;
   flex-flow: column wrap;
   margin: 50px;
+}
+
+.form-div {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+}
+
+.homeSegment {
+  margin: 30px;
+}
+
+.searchSegment {
+  padding: 30px;
 }

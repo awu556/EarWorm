@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import SongSearchResults from './SongSearchResults'
-import {Button, Form, Search} from 'semantic-ui-react'
+import {Button, Form, Segment} from 'semantic-ui-react'
 
 class SongSearcher extends Component {
   constructor() {
@@ -45,27 +45,29 @@ class SongSearcher extends Component {
     return (
       <div>
         <div className="song-search">
-          <h2>Have a song lyric in mind? Look it up here!</h2>
+          <Segment className="searchSegment">
+            <h2>Have a song lyric in mind? Look it up here!</h2>
 
-          <Form onSubmit={this.onSubmit} size="massive">
-            <Form.Field>
-              <input
-                type="text"
-                placeholder="Like a rolling stone...."
-                onChange={this.onSearchChange}
-                value={this.state.lyrics}
-              />
-            </Form.Field>
+            <Form onSubmit={this.onSubmit} size="massive">
+              <Form.Field>
+                <input
+                  type="text"
+                  placeholder="Like a rolling stone...."
+                  onChange={this.onSearchChange}
+                  value={this.state.lyrics}
+                />
+              </Form.Field>
 
-            <Button
-              color="yellow"
-              size="large"
-              type="submit"
-              disabled={this.state.searchLyrics.length === 0}
-            >
-              Search
-            </Button>
-          </Form>
+              <Button
+                color="yellow"
+                size="large"
+                type="submit"
+                disabled={this.state.searchLyrics.length === 0}
+              >
+                Search
+              </Button>
+            </Form>
+          </Segment>
         </div>
 
         <SongSearchResults

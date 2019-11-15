@@ -1,19 +1,21 @@
 const router = require('express').Router()
+const apikey = process.env.MUSIXMATCH_API_KEY
 const music = require('musicmatch')({
-  apikey: '19c8312e5f65e34e70e7361977223254'
+  apikey
 })
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const {lyrics, page, pagesize} = req.query
+    const {lyrics, page} = req.query
     const data = await music.trackSearch({
-      q: lyrics,
+      q_lyrics: lyrics,
       s_track_rating: 'desc',
       f_has_lyrics: 1,
       page: page,
       page_size: 30
     })
+    // console.log(data)
     res.json(data)
   } catch (err) {
     next(err)

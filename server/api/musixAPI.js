@@ -15,9 +15,21 @@ router.get('/', async (req, res, next) => {
       page: page,
       page_size: 30
     })
-    // console.log(data)
     res.json(data)
   } catch (err) {
     next(err)
+  }
+})
+
+router.get('/trackMatchLyrics', async (req, res, next) => {
+  try {
+    const {trackName, trackArtist} = req.query
+    const data = await music.matcherLyrics({
+      q_track: trackName,
+      q_artist: trackArtist
+    })
+    res.json(data)
+  } catch (error) {
+    next(error)
   }
 })

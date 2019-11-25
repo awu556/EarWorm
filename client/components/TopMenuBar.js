@@ -1,40 +1,49 @@
 import React from 'react'
-import {Menu} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {logout} from '../store'
+
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button'
 
 const TopMenuBar = props => {
   return (
     <div className="topMenuBar">
-      {props.user.isLoggedIn ? (
-        <Menu size="large" inverted fluid widths={3}>
-          <Menu.Item as={Link} to="/">
-            Home
-          </Menu.Item>
-          <Menu.Item as={Link} to="/home" onClick={props.user.handleClick}>
-            Logout
-          </Menu.Item>
-          <Menu.Item as={Link} to="/searchForASong">
+      <AppBar position="static">
+        <Toolbar>
+          <Button color="inherit" component={Link} to="/searchForASong">
             Search for a Song!
-          </Menu.Item>
-        </Menu>
-      ) : (
-        <Menu size="large" inverted fluid widths={4}>
-          <Menu.Item as={Link} to="/">
-            Home
-          </Menu.Item>
-          <Menu.Item as={Link} to="/login">
-            Login
-          </Menu.Item>
-          <Menu.Item as={Link} to="/signup">
-            Sign Up
-          </Menu.Item>
-          <Menu.Item as={Link} to="/searchForASong">
-            Search for a Song!
-          </Menu.Item>
-        </Menu>
-      )}
+          </Button>
+
+          {props.user ? (
+            <div>
+              <Button color="inherit" href="#" onClick={props.handleClick}>
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <Button color="inherit" component={Link} to="/login">
+                Login
+              </Button>
+              <Button color="inherit" component={Link} to="/signup">
+                Sign Up
+              </Button>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar>
     </div>
   )
 }
 
-export default TopMenuBar
+const mapDispatchToProps = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(TopMenuBar)

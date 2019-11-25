@@ -1,57 +1,53 @@
 import React from 'react'
-import {Header, Table, Pagination} from 'semantic-ui-react'
+import {connect} from 'react-redux'
+import IndividualSongResult from './IndividualSongResult'
+
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TableFooter from '@material-ui/core/TableFooter'
+import TablePagination from '@material-ui/core/TablePagination'
 
 const SongSearchResults = props => {
-  const musicData = props.searchResults
-  return musicData && musicData.length > 1 && Array.isArray(musicData) ? (
-    <div className="songSearchResults">
-      <Pagination
-        pointing
-        secondary
-        activePage={props.pageNum}
-        totalPages={10}
-        onPageChange={props.pageChange}
-      />
+  const musicResults = props.musicResults.message.body.track_list
 
-      <Table basic="very" celled collapsing>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Track Name</Table.HeaderCell>
-            <Table.HeaderCell>Album</Table.HeaderCell>
-            <Table.HeaderCell>Artist</Table.HeaderCell>
-            <Table.HeaderCell>Lyrics Link</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {musicData.map(data => (
-            <Table.Row key={data.track.track_id}>
-              <Table.Cell>
-                <Header.Content>{data.track.track_name}</Header.Content>
-              </Table.Cell>
-              <Table.Cell>{data.track.album_name}</Table.Cell>
-              <Table.Cell>{data.track.artist_name}</Table.Cell>
-              <Table.Cell href={data.track.track_share_url}>
-                Link to Lyrics!
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-
-      <Pagination
-        pointing
-        secondary
-        activePage={props.pageNum}
-        totalPages={10}
-        onPageChange={props.pageChange}
-      />
-    </div>
-  ) : (
-    <div className="songSearchResults">
-      <h1>{musicData}</h1>
-    </div>
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Song Title</TableCell>
+          <TableCell>Album</TableCell>
+          <TableCell>Artist</TableCell>
+          <TableCell />
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {musicResults.map(row => {
+          return (
+            <IndividualSongResult key={row.track.track_id} row={row.track} />
+          )
+        })}
+      </TableBody>
+      <TableFooter>
+        <TablePagination
+          page={0}
+          rowsPerPage={30}
+          count={30}
+          labelRowsPerPage={(10, 60, 30, 10)}
+        />
+      </TableFooter>
+    </Table>
   )
 }
 
-export default SongSearchResults
+const mapStateToProps = state => {
+  return {
+    musicResults: state.songs
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongSearchResults)

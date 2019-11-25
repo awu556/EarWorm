@@ -16,7 +16,7 @@ class Navbar extends Component {
         </Link>
 
         <nav>
-          <TopMenuBar user={this.props} />
+          <TopMenuBar user={isLoggedIn} />
         </nav>
       </div>
     )

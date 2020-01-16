@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import IndividualSongResult from './IndividualSongResult'
 
+import {getAllSongs} from '../store/songData'
+
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -12,6 +14,11 @@ import TablePagination from '@material-ui/core/TablePagination'
 
 const SongSearchResults = props => {
   const musicResults = props.musicResults.message.body.track_list
+
+  const handlePageChange = () => {
+    console.log(props.pageNum)
+    props.getAllSongs(props.searchLyrics, pageNum)
+  }
 
   return (
     <Table>
@@ -32,9 +39,10 @@ const SongSearchResults = props => {
       </TableBody>
       <TableFooter>
         <TablePagination
-          page={0}
+          page={pageNum}
           rowsPerPage={30}
-          count={30}
+          count={180}
+          onChangePage={handlePageChange}
           labelRowsPerPage={(10, 60, 30, 10)}
         />
       </TableFooter>
@@ -48,6 +56,8 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  getAllSongs
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongSearchResults)

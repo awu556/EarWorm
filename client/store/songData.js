@@ -11,10 +11,17 @@ const gotAllSongs = songs => ({
 
 // Thunk Middleware
 
-export const getAllSongs = lyrics => async dispatch => {
+export const getAllSongs = (lyrics, rows) => async dispatch => {
   try {
-    const {data} = await axios.get(`/api/music?lyrics=${lyrics}`)
-    dispatch(gotAllSongs(data))
+    if (!rows) {
+      const {data} = await axios.get(`/api/music?lyrics=${lyrics}`)
+      dispatch(gotAllSongs(data))
+    } else {
+      const {data} = await axios.get(
+        `/api/music?lyrics=${lyrics}&page_size=${rows}`
+      )
+      dispatch(gotAllSongs(data))
+    }
   } catch (error) {
     console.error(error)
   }

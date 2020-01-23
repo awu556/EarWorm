@@ -41,8 +41,7 @@ const SongSearchResults = props => {
       </TableBody>
       <TableFooter>
         <TablePagination
-          page={pageNum}
-          rowsPerPage={30}
+          page={0}
           count={rowCount}
           labelRowsPerPage={(10, 60, 30, 10)}
           onChangeRowsPerPage={pageRowChange}

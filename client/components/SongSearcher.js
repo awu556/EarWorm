@@ -48,10 +48,7 @@ class SongSearcher extends Component {
 
         {this.props.musicResults.message &&
         this.props.musicResults.message.body.track_list.length > 0 ? (
-          <SongSearchResults
-            pageNum={this.state.searchPage}
-            lyrics={this.state.searchLyrics}
-          />
+          <SongSearchResults lyrics={this.state.searchLyrics} />
         ) : (
           ''
         )}

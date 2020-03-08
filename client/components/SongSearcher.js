@@ -11,8 +11,7 @@ class SongSearcher extends Component {
   constructor() {
     super()
     this.state = {
-      searchLyrics: '',
-      searchPage: 1
+      searchLyrics: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)

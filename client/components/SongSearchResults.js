@@ -31,6 +31,7 @@ const SongSearchResults = props => {
     },
     [page]
   )
+
   return (
     <Table>
       <TableHead>

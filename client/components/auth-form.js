@@ -13,8 +13,8 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div className="form-div">
-      <form onSubmit={handleSubmit} name={name}>
+    <div className="auth-form-div">
+      <form onSubmit={handleSubmit} name={name} className="auth-form-box">
         <TextField label="email" margin="normal" name="email" type="text" />
 
         <TextField

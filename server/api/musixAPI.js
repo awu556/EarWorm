@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
       q_lyrics: lyrics,
       s_track_rating: 'desc',
       f_has_lyrics: 1,
-      page: page,
+      page: page || 1,
       page_size: page_size || 10
     })
     res.json(data)

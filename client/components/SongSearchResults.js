@@ -14,20 +14,23 @@ import TablePagination from '@material-ui/core/TablePagination'
 const SongSearchResults = props => {
   let [page, setPage] = React.useState(0)
   let [rowsPerPage, setRowsPerPage] = React.useState(10)
-  let rowCount = 10
   const musicResults = props.musicResults.message.body.track_list
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event, newPage = 1) => {
     setPage(newPage)
   }
 
   const pageRowChange = event => {
-    // console.log(event.target.value)
-    props.getAllSongs(props.lyrics, event.target.value)
+    props.getAllSongs(props.lyrics, event.target.value, page)
     setRowsPerPage(event.target.value)
-    console.log(rowsPerPage)
   }
 
+  React.useEffect(
+    () => {
+      props.getAllSongs(props.lyrics, rowsPerPage, page)
+    },
+    [page]
+  )
   return (
     <Table>
       <TableHead>

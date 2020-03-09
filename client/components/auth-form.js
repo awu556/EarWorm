@@ -5,6 +5,7 @@ import {auth} from '../store'
 // import {Form, Button} from 'semantic-ui-react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
 
 /**
  * COMPONENT
@@ -14,20 +15,23 @@ const AuthForm = props => {
 
   return (
     <div className="auth-form-div">
-      <form onSubmit={handleSubmit} name={name} className="auth-form-box">
-        <TextField label="email" margin="normal" name="email" type="text" />
+      <Paper className="paper-form">
+        <h1>{displayName} here!</h1>
+        <form onSubmit={handleSubmit} name={name} className="auth-form-box">
+          <TextField label="email" margin="normal" name="email" type="text" />
 
-        <TextField
-          label="password"
-          margin="normal"
-          name="password"
-          type="password"
-        />
+          <TextField
+            label="password"
+            margin="normal"
+            name="password"
+            type="password"
+          />
 
-        <Button variant="contained" type="submit">
-          {displayName}
-        </Button>
-      </form>
+          <Button variant="contained" type="submit">
+            {displayName}
+          </Button>
+        </form>
+      </Paper>
     </div>
   )
 }

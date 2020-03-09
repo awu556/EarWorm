@@ -14,13 +14,21 @@ body {
 }
 
 .auth-form-div {
+  text-align: center;
   display: flex;
   justify-content: center;
+  height: 100vh;
+  background: #7a9b76;
+}
+
+.paper-form {
   margin-top: 5%;
+  height: 400px;
 }
 
 .auth-form-box {
   display: flex;
   flex-flow: column nowrap;
-  width: 20%;
+  padding: 0px 100px 100px 100px;
+  width: 400px;
 }

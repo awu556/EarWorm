@@ -23,12 +23,12 @@ body {
 
 .paper-form {
   margin-top: 5%;
-  height: 400px;
+  height: 300px;
+  padding: 80px;
 }
 
 .auth-form-box {
   display: flex;
   flex-flow: column nowrap;
-  padding: 0px 100px 100px 100px;
   width: 400px;
 }

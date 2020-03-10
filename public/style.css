@@ -32,3 +32,16 @@ body {
   flex-flow: column nowrap;
   width: 400px;
 }
+
+.song-search-div {
+  height: 100vh;
+  padding: 100px;
+}
+
+.song-search-paper {
+  padding: 100px;
+}
+
+.song-search-input-bar {
+  text-align: center;
+}

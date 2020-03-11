@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, SongSearcher} from './components'
+import {Login, Signup, UserHome, SongSearcher, MyAccount} from './components'
 import {me} from './store'
 
 /**
@@ -16,11 +16,20 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/searchForASong" component={SongSearcher} />
-        <Route path="/" component={UserHome} />
+        {this.props.isLoggedIn ? (
+          <Switch>
+            <Route path="/myaccount" component={MyAccount} />
+            <Route path="/searchForASong" component={SongSearcher} />
+            <Route path="/" component={UserHome} />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/searchForASong" component={SongSearcher} />
+            <Route path="/" component={UserHome} />
+          </Switch>
+        )}
       </Switch>
     )
   }

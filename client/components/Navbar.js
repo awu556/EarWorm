@@ -31,7 +31,11 @@ const Navbar = props => {
           </Button>
 
           {props.user ? (
-            <div>
+            <div className={classes.login}>
+              <Button color="inherit" component={Link} to="/myaccount">
+                My Account
+              </Button>
+
               <Button color="inherit" href="#" onClick={props.handleClick}>
                 Logout
               </Button>

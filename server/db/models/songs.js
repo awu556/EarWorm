@@ -7,8 +7,7 @@ const Song = db.define('song', {
     allowNull: false
   },
   savedSong: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   }
 })
 

@@ -40,6 +40,7 @@ const SongSearchResults = props => {
           <TableCell>Album</TableCell>
           <TableCell>Artist</TableCell>
           <TableCell />
+          <TableCell />
         </TableRow>
       </TableHead>
       <TableBody>

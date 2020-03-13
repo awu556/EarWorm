@@ -6,6 +6,15 @@ body {
   background: #1e90ff;
 }
 
+.home-page {
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+  text-align: center;
+  height: 100vh;
+  background: #c8bfc7;
+}
+
 .logo {
   display: block;
   margin-left: auto;
@@ -34,8 +43,9 @@ body {
 }
 
 .song-search-div {
-  height: 100vh;
+  height: 100%;
   padding: 100px;
+  background: black;
 }
 
 .song-search-paper {

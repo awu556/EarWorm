@@ -74,6 +74,11 @@ const IndividualSongResult = props => {
           </Popover>
         )}
       </TableCell>
+      <TableCell>
+        <Button variant="contained" color="primary" href={row.track_share_url}>
+          Link to lyrics!
+        </Button>
+      </TableCell>
     </TableRow>
   )
 }
